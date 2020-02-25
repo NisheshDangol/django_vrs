@@ -31,14 +31,14 @@
                       <a class="dropdown-item" href="#">Bus</a>
                     </div>
                   </li>
-                  <li><a href="/about/" class="nav-link">About</a></li>
+                  <li><a href="/about" class="nav-link">About</a></li>
                   <li><a href="/contact" class="nav-link">Contact</a></li>
                   {% if user.is_authenticated %}
 										<li>Hello {{user.first_name}}</a></li>
-										<li><a href="account/customer_logout">Log Out</a></li>
+										<li><a href="/account/customer_logout">Log Out</a></li>
 									{% else %}
-                                    	<li><a href="account/customer_login">Log In</a></li>
-										<li><a href="account/customer_register">Register</a> </li>
+                                    	<li><a href="/account/customer_login">Log In</a></li>
+										<li><a href="/account/customer_register">Register</a> </li>
 									{% endif %}
                 </ul>
               </nav>
