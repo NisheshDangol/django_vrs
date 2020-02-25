@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.CustomerUser'
+
 WSGI_APPLICATION = 'VRS.wsgi.application'
 
 

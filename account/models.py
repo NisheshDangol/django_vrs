@@ -30,7 +30,7 @@ class ClientUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-    location = models.CharField(verbose_name='location')
+    location = models.CharField(verbose_name='location', max_length=255)
     phone = models.BigIntegerField(verbose_name='phone')
     pan_vat = models.ImageField()
 
@@ -58,7 +58,7 @@ class CustomerUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-    location = models.CharField(verbose_name='location')
+    location = models.CharField(verbose_name='location', max_length=255)
     phone = models.BigIntegerField(verbose_name='phone')
     license = models.ImageField()
 
