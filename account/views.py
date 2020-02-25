@@ -6,7 +6,7 @@ from .models import ClientUser
 # Create your views here.
 
 
-def login(request):
+def customer_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -19,7 +19,7 @@ def login(request):
     return render(request, 'login.html')
 
 
-def register(request):
+def customer_register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -46,6 +46,23 @@ def register(request):
         return render(request, 'register.html')
 
 
-def logout(request):
+def customer_logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+def client_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/client_dashboard')
+        else:
+            return redirect('login')
+    return render(request, 'login.html')
+
+
+def client_dashboard(request):
+    return render(request, 'client_dashboard.html')
