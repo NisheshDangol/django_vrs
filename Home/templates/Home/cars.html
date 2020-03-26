@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'Home/base.html' %}
 {% load static %}
 {% block title %}Cars{% endblock %}
 
@@ -22,7 +22,7 @@
           {% for cars in car %}
 
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="item-1">
+              <div class="item-1">
                 <a href="#"><img src="{{cars.img.url}}" alt="Image" class="img-fluid"></a>
                 <div class="item-1-contents">
                   <div class="text-center">
@@ -44,24 +44,25 @@
                     </li>
 
                   </ul>
+                  <ul class="specs">
+
+                    <li>
+                      <span>Uploaded by</span>
+                      <span class="spec"><a href="#">{{cars.uploaded_by}}</a></span>
+                    </li>
+
+                  </ul>
                   <div class="d-flex action">
-                    <a href="contact.html" class="btn btn-primary">Rent Now</a>
+                    <a href="/account/rent_car/{{ cars.id }}" ><button class="btn btn-primary cart" id="cr{{cars.id}}">Rent Now</button> </a>
+                  </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
           </div>
 
           {% endfor %}
-
-
-
-
-          <div class="col-12">
-            <span class="p-3">1</span>
-            <a href="#" class="p-3">2</a>
-            <a href="#" class="p-3">3</a>
-            <a href="#" class="p-3">4</a>
-          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,105 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+
+    <button type="submit" ><a href="/account/upload_car">upload car</a></button>
+    <button type="submit" ><a href="/account/upload_bike">upload bike</a></button>
+    <button type="submit" ><a href="/account/booking_details">Booking Details</a></button>
+    <table class="table table-xl col-6">
+      <thead>
+        <th>Cars Uploaded</th>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Seat</th>
+          <th scope="col">Desc</th>
+          <th scope="col">Available</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cars in car %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{cars.name}}</td>
+                <td>{{cars.seat}}</td>
+                <td>{{cars.desc}}</td>
+                <td>{{cars.available}}</td>
+                <td>{{cars.price}}</td>
+                <td>{{cars.img}}</td>
+                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table class="table table-sm-xl col-6">
+      <thead>
+      <th>Bikes Uploaded</th>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-sm-xl col-6">
+      <thead>
+      <th>My Bookings</th>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+{% endblock %}
