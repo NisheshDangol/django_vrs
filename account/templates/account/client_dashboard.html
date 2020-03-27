@@ -39,67 +39,93 @@
 
     <table class="table table-sm-xl col-6">
       <thead>
-      <th>Bikes Uploaded</th>
+        <th>Bikes Uploaded</th>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-          <th scope="col">Actions</th>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">CC</th>
+          <th scope="col">Desc</th>
+          <th scope="col">Available</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
+        <tbody>
+        {% for bikes in bike %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{bikes.name}}</td>
+                <td>{{bikes.cc}}</td>
+                <td>{{bikes.desc}}</td>
+                <td>{{bikes.available}}</td>
+                <td>{{bikes.price}}</td>
+                <td>{{bikes.img}}</td>
+                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
 
     <table class="table table-sm-xl col-6">
       <thead>
-      <th>My Bookings</th>
+      <th>Cars Ordered</th>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-          <th scope="col">Actions</th>
+          <th scope="col">Customer_name</th>
+          <th scope="col">Car_id</th>
+          <th scope="col">Location</th>
+          <th scope="col">Date_of_delivery</th>
+          <th scope="col">Booking_date</th>
+          <th scope="col">Return_date</th>
+          <th scope="col">No_of_vehicle</th>
         </tr>
       </thead>
       <tbody>
+        {% for car_order in car_order %}
+            <tr>
+                <th scope="row">{{car_order.id}}</th>
+                <td>{{car_order.customer}}</td>
+                <td>{{car_order.car}}</td>
+                <td>{{car_order.location}}</td>
+                <td>{{car_order.date_of_delivery}}</td>
+                <td>{{car_order.order_date}}</td>
+                <td>{{car_order.return_date}}</td>
+                <td>{{car_order.no_of_vehicle}}</td>
+                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+    <table class="table table-sm-xl col-6">
+      <thead>
+      <th>Bikes Ordered</th>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+          <th scope="col">#</th>
+          <th scope="col">Customer_name</th>
+          <th scope="col">Bike_id</th>
+          <th scope="col">Location</th>
+          <th scope="col">Date_of_delivery</th>
+          <th scope="col">Booking_date</th>
+          <th scope="col">Return_date</th>
+          <th scope="col">No_of_vehicle</th>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+      </thead>
+      <tbody>
+        {% for bike_order in bike_order %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{bike_order.customer}}</td>
+                <td>{{bike_order.bike}}</td>
+                <td>{{bike_order.location}}</td>
+                <td>{{bike_order.dater_of_delivery}}</td>
+                <td>{{bike_order.order_date}}</td>
+                <td>{{bike_order.return_date}}</td>
+                <td>{{bike_order.no_of_vehicle}}</td>
+                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+            </tr>
+        {% endfor %}
       </tbody>
     </table>
 {% endblock %}

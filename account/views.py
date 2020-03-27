@@ -60,12 +60,10 @@ def client_login(request):
 @login_required()
 def client_dashboard(request):
     profile = request.user
-    print(profile)
     car = Cars.objects.filter(uploaded_by=profile)
-    print(car)
     bike = Bikes.objects.filter(uploaded_by=profile)
-    car_order = Order.objects.filter(car=car)
-    bike_order = Order.objects.filter(bike=bike)
+    car_order = Order.objects.filter(car__in=car)
+    bike_order = Order.objects.filter(bike__in=bike)
 
     return render(request, 'account/client_dashboard.html', {'car': car, 'bike': bike, 'car_order': car_order, 'bike_order': bike_order })
 
@@ -91,16 +89,16 @@ def upload_car(request):
 
 @login_required()
 def upload_bike(request):
-    car = BikeUploadForm
+    bike = BikeUploadForm
     if request.method == 'POST' or request.method=='FILES':
         bike = BikeUploadForm(request.POST, request.FILES)
-        if car.is_valid():
+        if bike.is_valid():
             obj = bike.save(commit=False)
             user = request.user
             obj.uploaded_by = user
             obj.save()
             return redirect('client_dashboard')
-    return render(request, 'account/upload_car.html', {'bike': bike})
+    return render(request, 'account/bike_upload.html', {'bike': bike})
 
 
 @login_required()
@@ -110,7 +108,7 @@ def rent_car(request, id):
     request.session['id'] = id
     the_id = request.session['id']
     car = Cars.objects.get(id=the_id)
-    print(car.name,car.price,car.id)
+
 
     if request.method == 'POST':
         rent = OrderForm(request.POST)
@@ -145,3 +143,7 @@ def rent_bike(request, id):
             return redirect('/')
     return render(request, 'account/order_form.html', {'form': rent})
 
+def Carview(request):
+    profile = request.user
+    car = Cars.objects.filter(uploaded_by=profile)
+    return render(request, 'account/car')

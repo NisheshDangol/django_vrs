@@ -59,10 +59,7 @@ class Bikes(models.Model):
     img = models.ImageField(upload_to='pics')
     available = models.BooleanField(default='True')
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
-#    slug = models.SlugField(unique=True, max_length=250)
 
- #   class Meta:
-  #      unique_together = ('uploaded_by', 'slug')
 
 
 class Order(models.Model):

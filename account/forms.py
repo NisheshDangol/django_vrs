@@ -83,6 +83,14 @@ class CarUploadForm(forms.ModelForm):
             'available'
         ]
 
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Name'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Price'}),
+            'seat': forms.NumberInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Seat'}),
+            'desc': forms.Textarea(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Description'}),
+            'img': forms.FileInput(attrs={'class': 'form-control-file', 'required': True, 'placeholder': 'Image'}),
+        }
+
 
 class BikeUploadForm(forms.ModelForm):
     name = forms.TextInput()
@@ -101,6 +109,14 @@ class BikeUploadForm(forms.ModelForm):
             'img',
             'available'
         ]
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Name'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Price'}),
+            'cc': forms.NumberInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'CCs'}),
+            'desc': forms.Textarea(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Description'}),
+            'img': forms.FileInput(attrs={'class': 'form-control-file', 'required': True, 'placeholder': 'Image'}),
+        }
 
 
 class OrderForm(forms.ModelForm):
