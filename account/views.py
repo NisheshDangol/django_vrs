@@ -168,7 +168,7 @@ def carview(request):
 def bikeview(request):
     profile = request.user
     bike = Bikes.objects.filter(uploaded_by=profile)
-    return render(request, 'account/car_list.html', {'bike':bike})
+    return render(request, 'account/bike_list.html', {'bike':bike})
 
 
 @login_required()
@@ -233,6 +233,8 @@ def confirm_booking(request, id):
     return render(request, 'account/delete.html', {'object':obj})
 
 
+@login_required()
+@allowed_users(allowed_roles=['client'])
 def delete_booking(request, id):
     obj = Order.objects.get(id=id)
 
@@ -241,3 +243,21 @@ def delete_booking(request, id):
         return redirect('client_dashboard')
 
     return render(request, 'account/delete.html', {'object':obj})
+
+
+@login_required()
+@allowed_users(allowed_roles=['client'])
+def booking_detail(request):
+    profile = request.user
+    car = Cars.objects.filter(uploaded_by=profile)
+    bike = Bikes.objects.filter(uploaded_by=profile)
+    car_order = Order.objects.filter(car__in=car)
+    bike_order = Order.objects.filter(bike__in=bike)
+
+    return render(request, 'account/booking_detail.html',
+                  {'profile': profile, 'car': car, 'bike': bike, 'car_order': car_order, 'bike_order': bike_order})
+
+
+
+
+

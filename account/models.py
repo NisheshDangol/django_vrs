@@ -70,9 +70,9 @@ class Order(models.Model):
         ('Canceled', 'Canceled'),
         ('Pending', 'Pending')
     ]
-    customer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    car = models.ForeignKey(Cars, null=True, on_delete=models.SET_NULL)
-    bike = models.ForeignKey(Bikes, null=True, on_delete=models.SET_NULL)
+    customer = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    car = models.ForeignKey(Cars, null=True, on_delete=models.CASCADE)
+    bike = models.ForeignKey(Bikes, null=True, on_delete=models.CASCADE)
     location = models.CharField(max_length=256)
     date_of_delivery = models.DateField()
     order_date = models.DateTimeField(auto_now_add=True)

@@ -1,79 +1,9 @@
 {% extends 'account/base.html' %}
-{% load static %}
-{% block title %}Dashboard{% endblock %}
-
+{% block title %}booking details{% endblock %}
 
 {% block content %}
-    <a class="rounded btn btn-primary" href="{% url 'upload_car' %}">upload car</a>
-    <a class="btn btn-primary" href="{% url 'upload_bike' %}">upload bike</a>
-    <div class="rounded"></div>
-    <table class="table table-sm" style="margin-top:50px;margin-bottom:50px">
-      <thead>
-        <th>Cars Uploaded</th>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Seat</th>
-          <th scope="col">Desc</th>
-          <th scope="col">Available</th>
-          <th scope="col">Price</th>
-          <th scope="col">Image</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for cars in car %}
-            <tr>
-                <th scope="row">{{cars.id}}</th>
-                <td>{{cars.name}}</td>
-                <td>{{cars.seat}}</td>
-                <td>{{cars.desc}}</td>
-                <td>{{cars.available}}</td>
-                <td>{{cars.price}}</td>
-                <td>{{cars.img}}</td>
-                <td>
-                    <a type="button" class="btn btn-info" href="{% url 'car_edit' cars.id %}">Edit</a>
-                    <a type="button" class="btn btn-danger" href="{% url 'car_delete' cars.id %}">Delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
-    <table class="table table-sm" style="margin-top:50px;margin-bottom:50px">
-      <thead>
-        <th>Bikes Uploaded</th>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Name</th>
-          <th scope="col">CC</th>
-          <th scope="col">Desc</th>
-          <th scope="col">Available</th>
-          <th scope="col">Price</th>
-          <th scope="col">Image</th>
-            <th scope="col">Action</th>
-        </tr>
-      </thead>
-        <tbody>
-        {% for bikes in bike %}
-            <tr>
-                <th scope="row">{{bikes.id}}</th>
-                <td>{{bikes.name}}</td>
-                <td>{{bikes.cc}}</td>
-                <td>{{bikes.desc}}</td>
-                <td>{{bikes.available}}</td>
-                <td>{{bikes.price}}</td>
-                <td>{{bikes.img}}</td>
-                <td>
-                    <a type="button" class="btn btn-info" href="{% url 'bike_edit' bikes.id %}">Edit</a>
-                    <a type="button" class="btn btn-danger" href="{% url 'bike_delete' bikes.id %}">Delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <table class="table table-sm" style="margin-top:50px;margin-bottom:50px">
+<table class="table table-sm" style="margin-top:50px;margin-bottom:50px">
       <thead>
       <th>Cars Ordered</th>
         <tr>

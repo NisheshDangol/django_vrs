@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import customer_login, customer_logout, customer_register, client_login, client_dashboard, client_logout, \
     upload_car, rent_car, upload_bike, carview, bikeview, edit_car, delete_car, delete_bike, edit_bike, rent_bike, \
-    confirm_booking, delete_booking
+    confirm_booking, delete_booking, booking_detail
 
 urlpatterns = [
     path('customer_login/', customer_login, name = 'customer_login'),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('bike_delete/<str:id>', delete_bike, name='bike_delete'),
     path('confirm_booking/<str:id>', confirm_booking, name='confirm_booking'),
     path('delete_booking/<str:id>', delete_booking, name='delete_booking'),
+    path('booking_detail/', booking_detail, name= 'booking_detail'),
 ]

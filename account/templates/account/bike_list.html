@@ -1,0 +1,40 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block title %}Bike_upload{% endblock %}
+
+
+{% block content %}
+<table class="table table-sm">
+      <thead>
+        <th>Bikes Uploaded</th>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">CC</th>
+          <th scope="col">Desc</th>
+          <th scope="col">Available</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+            <th scope="col">Action</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for bikes in bike %}
+            <tr>
+                <th scope="row">{{bikes.id}}</th>
+                <td>{{bikes.name}}</td>
+                <td>{{bikes.cc}}</td>
+                <td>{{bikes.desc}}</td>
+                <td>{{bikes.available}}</td>
+                <td>{{bikes.price}}</td>
+                <td>{{bikes.img}}</td>
+                <td>
+                    <a type="button" class="btn btn-info" href="{% url 'bike_edit' bikes.id %}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{% url 'bike_delete' bikes.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

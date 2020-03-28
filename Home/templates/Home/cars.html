@@ -27,14 +27,7 @@
                 <div class="item-1-contents">
                   <div class="text-center">
                   <h3><a href="#">{{cars.name}}</a></h3>
-                  <div class="rating">
-                    <span class="icon-star text-warning"></span>
-                    <span class="icon-star text-warning"></span>
-                    <span class="icon-star text-warning"></span>
-                    <span class="icon-star text-warning"></span>
-                    <span class="icon-star text-warning"></span>
-                  </div>
-                  <div class="rent-price"><span>${{cars.price}}/</span>day</div>
+                  <div class="rent-price"><span>{{cars.price}}/</span>day</div>
                   </div>
                   <ul class="specs">
 
@@ -56,13 +49,15 @@
                     <a href="/account/rent_car/{{ cars.id }}" ><button class="btn btn-primary cart" id="cr{{cars.id}}">Rent Now</button> </a>
                   </div>
 
-                    </div>
-                  </div>
                 </div>
               </div>
           </div>
 
-          {% endfor %}
+           {% endfor %}
+        </div>
+      </div>
+
+
         </div>
       </div>
     </div>
