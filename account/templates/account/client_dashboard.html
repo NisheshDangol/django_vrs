@@ -5,10 +5,9 @@
 
 {% block content %}
 
-    <button type="submit" ><a href="/account/upload_car">upload car</a></button>
-    <button type="submit" ><a href="/account/upload_bike">upload bike</a></button>
-    <button type="submit" ><a href="/account/booking_details">Booking Details</a></button>
-    <table class="table table-xl col-6">
+    <a class="btn btn-primary" href="{% url 'upload_car' %}">upload car</a>
+    <a class="btn btn-primary" href="{% url 'upload_bike' %}">upload bike</a>
+    <table class="table table-sm">
       <thead>
         <th>Cars Uploaded</th>
         <tr>
@@ -19,25 +18,29 @@
           <th scope="col">Available</th>
           <th scope="col">Price</th>
           <th scope="col">Image</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
         {% for cars in car %}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{cars.id}}</th>
                 <td>{{cars.name}}</td>
                 <td>{{cars.seat}}</td>
                 <td>{{cars.desc}}</td>
                 <td>{{cars.available}}</td>
                 <td>{{cars.price}}</td>
                 <td>{{cars.img}}</td>
-                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+                <td>
+                    <a type="button" class="btn btn-info" href="{% url 'car_edit' cars.id %}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{% url 'car_delete' cars.id %}">Delete</a>
+                </td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
 
-    <table class="table table-sm-xl col-6">
+    <table class="table table-sm">
       <thead>
         <th>Bikes Uploaded</th>
         <tr>
@@ -48,36 +51,42 @@
           <th scope="col">Available</th>
           <th scope="col">Price</th>
           <th scope="col">Image</th>
+            <th scope="col">Action</th>
         </tr>
       </thead>
         <tbody>
         {% for bikes in bike %}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{bikes.id}}</th>
                 <td>{{bikes.name}}</td>
                 <td>{{bikes.cc}}</td>
                 <td>{{bikes.desc}}</td>
                 <td>{{bikes.available}}</td>
                 <td>{{bikes.price}}</td>
                 <td>{{bikes.img}}</td>
-                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+                <td>
+                    <a type="button" class="btn btn-info" href="{% url 'bike_edit' bikes.id %}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{% url 'bike_delete' bikes.id %}">Delete</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <table class="table table-sm-xl col-6">
+    <table class="table table-sm">
       <thead>
       <th>Cars Ordered</th>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Customer_name</th>
           <th scope="col">Car_id</th>
+          <th scope="col">Customer_name</th>
+
           <th scope="col">Location</th>
           <th scope="col">Date_of_delivery</th>
           <th scope="col">Booking_date</th>
           <th scope="col">Return_date</th>
           <th scope="col">No_of_vehicle</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -91,18 +100,24 @@
                 <td>{{car_order.order_date}}</td>
                 <td>{{car_order.return_date}}</td>
                 <td>{{car_order.no_of_vehicle}}</td>
-                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+                <td>{{car_order.status}}</td>
+                <td>
+                    {% if car_order.status == "Pending" %}
+                        <a type="button" class="btn btn-success" href="{% url 'confirm_booking' car_order.id %}">Confirm</a>
+                    {% endif %}
+                    <a type="button" class="btn btn-success" href="">delete</a>
+                </td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
 
 
-    <table class="table table-sm-xl col-6">
+    <table class="table table-sm">
       <thead>
       <th>Bikes Ordered</th>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Order Id</th>
           <th scope="col">Customer_name</th>
           <th scope="col">Bike_id</th>
           <th scope="col">Location</th>
@@ -110,20 +125,28 @@
           <th scope="col">Booking_date</th>
           <th scope="col">Return_date</th>
           <th scope="col">No_of_vehicle</th>
+          <th scope="col">status</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         {% for bike_order in bike_order %}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{bike_order.id}}</th>
                 <td>{{bike_order.customer}}</td>
                 <td>{{bike_order.bike}}</td>
                 <td>{{bike_order.location}}</td>
-                <td>{{bike_order.dater_of_delivery}}</td>
+                <td>{{bike_order.date_of_delivery}}</td>
                 <td>{{bike_order.order_date}}</td>
                 <td>{{bike_order.return_date}}</td>
                 <td>{{bike_order.no_of_vehicle}}</td>
-                <td><button><a href="">Confirm</a></button><button><a href="">delete</a></button></td>
+                <td>{{bike_order.status}}</td>
+                <td>
+                    {% if car_order.status == "Pending" %}
+                        <a href="{% url 'confirm_booking' bike_order.id %}"><button type="button" class="btn btn-success">Confirm</button></a>
+                    {% endif %}
+                    <a href="{% url 'delete_booking' bike_order.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                </td>
             </tr>
         {% endfor %}
       </tbody>

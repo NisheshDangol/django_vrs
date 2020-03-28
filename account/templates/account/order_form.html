@@ -3,32 +3,13 @@
 
 {% block content %}
 
-<form action="/account/rent_car/{{ car.id }}" method="post">
+<form action="" method="post">
     {% csrf_token %}
-    <label for="">Vehicle:</label>
-    <input type="text" name="itemJSON" id="itemJSON" placeholder="{{ car.name }}" disabled>
+    <label >Vehicle:</label>
+    <input type="text" name="itemJSON" id="itemJSON" placeholder="{{ obj.name }}" disabled>
 
     {{form.as_p}}
     <input type="submit" placeholder="Submit">
 </form>
-
-{% endblock %}
-
-{% block js %}
-<script>
-  if(localStorage.getItem('cart') == null){
-    var cart = {}
-  }
-  else{
-    cart = JSON.parse(localStorage.getItem('cart'));
-
-  }
-
-  $.('#itemJSON').val(JSON.stringify(cart));
-  localStorage.clear();
-
-</script>
-
-
 
 {% endblock %}

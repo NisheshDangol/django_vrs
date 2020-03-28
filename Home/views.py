@@ -1,17 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
-
 # Create your views here.
-from account.forms import OrderForm
-from account.models import Cars
+
+from account.models import Cars, Bikes, Order
 
 
 def index(request):
-    return render(request, 'Home/index.html')
-
-
-def about(request):
-    return render(request, 'Home/about.html')
+    car = Cars.objects.all()
+    bike = Bikes.objects.all()
+    return render(request, 'Home/index.html', {'car':car, 'bike':bike})
 
 
 def contact(request):
@@ -29,9 +26,15 @@ def cars(request):
 
 
 def bikes(request):
-    return render(request, 'Home/bikes.html')
+    bike = Bikes.objects.all()
+    return render(request, 'Home/bikes.html', {'bike':bike})
 
 
 def index(request):
     car = Cars.objects.all()
     return render(request, 'Home/index.html', {'car': car})
+
+@login_required()
+def booking_detail(request):
+    order=Order.objects.filter(customer=request.user)
+    return render(request, 'Home/booking_detail.html', {'order':order})

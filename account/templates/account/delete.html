@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'account/base.html' %}
+{% load static %}
+{% block title %}Delete{% endblock %}
+
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>Are you sure ?</div>
+        <a href="/account/client_dashboard/" class="btn btn-primary">Cancel</a>
+        <button class="btn btn-danger" type="submit">Confirm</button>
+    </form>
+
+{% endblock %}

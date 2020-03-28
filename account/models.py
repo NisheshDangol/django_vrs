@@ -44,11 +44,9 @@ class Cars(models.Model):
     img = models.ImageField(upload_to='pics')
     available = models.BooleanField(default='True')
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
-#    slug = models.SlugField(unique=True, max_length=250)
 
-#    class Meta:
- #       unique_together = ('uploaded_by', 'slug')
-
+    def __str__(self):
+        return self.name
 
 
 class Bikes(models.Model):
@@ -60,6 +58,8 @@ class Bikes(models.Model):
     available = models.BooleanField(default='True')
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
@@ -76,9 +76,15 @@ class Order(models.Model):
     location = models.CharField(max_length=256)
     date_of_delivery = models.DateField()
     order_date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=255, default='pending', choices=STATUS)
+    status = models.CharField(max_length=255, default='Pending', choices=STATUS)
     return_date = models.DateTimeField()
     no_of_vehicle = models.IntegerField(default=1)
 
     def __unicode__(self):
         return self.car.name
+
+    def __str__(self):
+        if self.car:
+            return self.car.name
+        else:
+            return self.bike.name
