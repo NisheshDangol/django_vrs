@@ -37,7 +37,7 @@
 
                   {% if user.is_authenticated %}
                       <li><a href="/booking_detail" class="nav-link">Booking Detail</a></li>
-                      <li><a href="{% url 'profile_view' %}">Hello {{user.first_name}}</a></li>
+                      <li>Hello {{user.first_name}}</li>
                       <li><a href="/account/customer_logout">Log Out</a></li>
                   {% else %}
                       <li class="nav-item dropdown">

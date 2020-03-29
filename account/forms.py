@@ -133,4 +133,11 @@ class OrderForm(forms.ModelForm):
             'no_of_vehicle',
         ]
 
+        widgets = {
+            'location': forms.TextInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Location of delivery'}),
+            'date_of_delivery': forms.DateInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Date of delivery'}),
+            'return_date': forms.DateInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'Return date'}),
+            'no_of_vehicle': forms.NumberInput(attrs={'class': 'form-control', 'required': True, 'placeholder': 'No of vehicles'}),
+        }
+
 
